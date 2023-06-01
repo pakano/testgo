@@ -1,0 +1,14 @@
+Bc = "坐标北京"
+Names =  [ 1, 2 , 3 ]
+Names2 = "1111111111111111"
+"11111111111111111111111111"
+
+[song]
+    Name = "北京.北京"
+    Duration = 900
+
+
+[mysql]
+    Host = "localhost"
+    PassWord = "123456"
+   

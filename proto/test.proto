@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "./;proto";
+
+message Msg{
+    uint32 age1 = 1;
+    sint32 age2 = 2;
+    string name = 3;
+    bytes data = 4;
+}
+
+message Msg2{
+    uint32 age = 1;
+    uint32 age2 = 2;
+    string name = 3;
+}

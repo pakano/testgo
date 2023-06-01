@@ -1,0 +1,52 @@
+version: '2'
+
+networks:
+  tidb_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.88.0/24
+          gateway: 192.168.88.1
+
+services:
+  pd0:
+    image: pingcap/pd:latest
+    ports:
+      - "2379"
+    command:
+      - --name=pd0
+      - --client-urls=http://0.0.0.0:2379
+      - --peer-urls=http://0.0.0.0:2380
+      - --advertise-client-urls=http://pd0:2379
+      - --advertise-peer-urls=http://pd0:2380
+      - --initial-cluster=pd0=http://pd0:2380
+    restart: on-failure
+    networks:
+      - tidb_net
+  tikv0:
+    image: pingcap/tikv:latest
+    command:
+      - --addr=0.0.0.0:20160
+      - --advertise-addr=tikv0:20160
+      - --pd=pd0:2379
+    depends_on:
+      - "pd0"
+    restart: on-failure
+    networks:
+      - tidb_net
+  tidb:
+    image: pingcap/tidb:latest
+    ports:
+      - "4000:4000"
+      - "10080:10080"
+    command:
+      - --store=tikv
+      - --path=pd0:2379
+      - --advertise-address=tidb
+    depends_on:
+      - "tikv0"
+    restart: on-failure
+    networks:
+      tidb_net:
+        ipv4_address: 192.168.88.30

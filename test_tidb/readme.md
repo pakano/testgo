@@ -1,0 +1,4 @@
+docker-compose pull
+docker-compose up
+
+mysql -h 127.0.0.1 -P 4000 -u root

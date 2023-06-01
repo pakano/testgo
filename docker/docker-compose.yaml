@@ -1,0 +1,41 @@
+version: "2.0"
+services:
+  mysql:
+    image: mysql:8.0.19
+    command: 
+      #配置k-v
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      #root 密码
+      MYSQL_ROOT_PASSWORD: "root123456"
+    ports:
+      - "13306:3306"
+    volumes:
+      #/docker-entrypoint-initdb.d为容器启动自动执行sql的目录
+      - PWD/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - PWD/mysql_volume:/var/lib/mysql
+  sharing:
+    image: sharing:latest
+    depends_on:
+      - mysql
+    volumes:
+      - PWD/config.toml:/config/config.toml
+      - PWD/certs:/certs
+    ports:
+      - 5000:5000
+      - 5001:5001
+      - 5002:5002
+  nginx:
+    image: nginx:latest
+    volumes:
+      - PWD/sharing.conf:/etc/nginx/conf.d/sharing.conf
+      - PWD/certs:/certs
+      - PWD/dist:/dist
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - NGINX_PORT=80

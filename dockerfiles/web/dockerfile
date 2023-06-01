@@ -1,0 +1,12 @@
+FROM       docker.io/alpine:latest
+MAINTAINER memenet.net
+
+RUN echo "https://mirror.tuna.tsinghua.edu.cn/alpine/v3.4/main" > /etc/apk/repositories
+
+RUN apk add --update curl bash && rm -rf /var/cache/apk/*
+
+COPY ./app /
+
+EXPOSE 80
+
+CMD ["/app"]
