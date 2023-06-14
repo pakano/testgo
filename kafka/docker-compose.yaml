@@ -1,0 +1,22 @@
+version: '3'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.4.41
+      KAFKA_CREATE_TOPICS: TestComposeTopic:2:1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_BROKER_ID: 1
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.4.41:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+    container_name: kafka01
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/pxf/testgo/xx:/kafka

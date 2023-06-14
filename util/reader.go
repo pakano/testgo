@@ -1,6 +1,8 @@
 package util
 
-import "io"
+import (
+	"io"
+)
 
 type zero struct{}
 
@@ -8,4 +10,4 @@ func (z zero) Read(d []byte) (int, error) {
 	return len(d), nil
 }
 
-var Zero io.Reader = zero{}
+var Zero io.Reader = &zero{}

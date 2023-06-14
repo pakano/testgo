@@ -1,0 +1,25 @@
+<?xml version="1.0"?> 
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd"> 
+<mycat:schema xmlns:mycat="http://io.mycat/"> 
+	<!-- 逻辑库配置 --> 
+	<schema name="ITCAST" checkSQLschema="false" sqlMaxLimit="100"> 
+		<!-- 逻辑表配置 --> 
+		<table name="player,team" dataNode="dn1,dn2" rule="rule1"/> 
+	</schema> 
+	
+	<!-- 数据节点配置 --> 
+	<dataNode name="dn1" dataHost="host1" database="db1" /> 
+	<dataNode name="dn2" dataHost="host2" database="db1" /> 
+	
+	<!-- 节点主机配置 --> 
+	<dataHost name="host1" maxCon="1000" minCon="10" balance="0" writeType="0" dbType="mysql" dbDriver="native" switchType="1" slaveThreshold="100"> 
+		<heartbeat>select user()</heartbeat> 
+		<writeHost host="hostM1" url="172.17.0.2:3306" user="root" password="123"></writeHost>
+	</dataHost> 
+
+	<dataHost name="host2" maxCon="1000" minCon="10" balance="0" writeType="0" dbType="mysql" dbDriver="native" switchType="1" slaveThreshold="100"> 
+		<heartbeat>select user()</heartbeat>  
+		<writeHost host="hostM1" url="172.17.0.3:3306" user="root" password="123"></writeHost> 
+	</dataHost> 
+
+</mycat:schema>

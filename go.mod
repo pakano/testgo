@@ -7,6 +7,7 @@ require (
 	github.com/Shopify/sarama v1.38.1
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/cheerego/go-redisson v0.0.6
+	github.com/cheggaaa/pb v1.0.29
 	github.com/corona10/goimagehash v1.1.0
 	github.com/gin-contrib/sessions v0.0.5
 	github.com/gin-gonic/gin v1.8.1
@@ -19,24 +20,30 @@ require (
 	github.com/gorilla/sessions v1.2.1
 	github.com/gorilla/websocket v1.5.0
 	github.com/mailru/easyjson v0.7.7
+	github.com/olivere/elastic/v7 v7.0.32
 	github.com/orcaman/concurrent-map v1.0.0
 	github.com/pion/webrtc/v3 v3.1.41
 	github.com/pkg/errors v0.9.1
 	github.com/rs/cors v1.8.3
 	github.com/samuel/go-zookeeper v0.0.0-20201211165307-7117e9ea2414
 	github.com/satori/go.uuid v1.2.0
+	github.com/sirupsen/logrus v1.9.3
 	github.com/streadway/amqp v1.0.0
 	github.com/stretchr/testify v1.8.2
 	go.mongodb.org/mongo-driver v1.11.4
 	golang.org/x/text v0.9.0
 	golang.org/x/time v0.3.0
 	google.golang.org/protobuf v1.30.0
+	gopkg.in/sohlich/elogrus.v7 v7.0.0
 	gorm.io/driver/mysql v1.4.7
 	gorm.io/driver/sqlite v1.4.3
 	gorm.io/gorm v1.24.3
+	gorm.io/plugin/dbresolver v1.4.1
+	k8s.io/utils v0.0.0-20230505201702-9f6742963106
 )
 
 require (
+	github.com/ajg/form v1.5.1 // indirect
 	github.com/boj/redistore v0.0.0-20180917114910-cd5dcc76aeff // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -71,6 +78,7 @@ require (
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
+	github.com/mattn/go-runewidth v0.0.4 // indirect
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect

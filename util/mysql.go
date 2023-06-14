@@ -7,8 +7,12 @@ import (
 	"gorm.io/gorm"
 )
 
-// dsn := "root:123@tcp(127.0.0.1:3306)/test?charset=utf8mb4&parseTime=True&loc=Local"
+const (
+	DSNFormat = "%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=true"
+)
+
 // dsn: user:passwd@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local
+
 func NewMysqlInstance(dsn string) (*gorm.DB, error) {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		SkipDefaultTransaction: true,

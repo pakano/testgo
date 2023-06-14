@@ -2,11 +2,15 @@ package hs256
 
 import (
 	"errors"
-	"math/rand"
 	"time"
+
+	"test/util"
 
 	"github.com/golang-jwt/jwt/v5"
 )
+
+// 签名密钥
+const signKey = "hello world"
 
 type User struct {
 	UserID     int
@@ -19,20 +23,6 @@ type MyCustomClaims struct {
 	jwt.RegisteredClaims
 }
 
-// 签名密钥
-const sign_key = "hello world"
-
-// 随机字符串
-var letters = []rune("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-
-func randStr(str_len int) string {
-	rand_bytes := make([]rune, str_len)
-	for i := range rand_bytes {
-		rand_bytes[i] = letters[rand.Intn(len(letters))]
-	}
-	return string(rand_bytes)
-}
-
 func GenerateTokenUsingHs256(user User) (string, error) {
 	claim := MyCustomClaims{
 		User: user,
@@ -43,16 +33,16 @@ func GenerateTokenUsingHs256(user User) (string, error) {
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour)),   //过期时间
 			NotBefore: jwt.NewNumericDate(time.Now().Add(time.Second)), //最早使用时间
 			IssuedAt:  jwt.NewNumericDate(time.Now()),                  //签发时间
-			ID:        randStr(10),                                     // wt ID, 类似于盐值
+			ID:        util.GetRanStr(10),                              // wt ID, 类似于盐值
 		},
 	}
-	token, err := jwt.NewWithClaims(jwt.SigningMethodHS256, claim).SignedString([]byte(sign_key))
+	token, err := jwt.NewWithClaims(jwt.SigningMethodHS256, claim).SignedString([]byte(signKey))
 	return token, err
 }
 
 func ParseTokenHs256(token_string string) (*MyCustomClaims, error) {
 	token, err := jwt.ParseWithClaims(token_string, &MyCustomClaims{}, func(token *jwt.Token) (interface{}, error) {
-		return []byte(sign_key), nil //返回签名密钥
+		return []byte(signKey), nil //返回签名密钥
 	})
 	if err != nil {
 		return nil, err
