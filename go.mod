@@ -7,7 +7,6 @@ require (
 	github.com/Shopify/sarama v1.38.1
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/cheerego/go-redisson v0.0.6
-	github.com/cheggaaa/pb v1.0.29
 	github.com/corona10/goimagehash v1.1.0
 	github.com/gin-contrib/sessions v0.0.5
 	github.com/gin-gonic/gin v1.8.1
@@ -21,16 +20,14 @@ require (
 	github.com/gorilla/websocket v1.5.0
 	github.com/mailru/easyjson v0.7.7
 	github.com/olivere/elastic/v7 v7.0.32
-	github.com/orcaman/concurrent-map v1.0.0
 	github.com/pion/webrtc/v3 v3.1.41
-	github.com/pkg/errors v0.9.1
 	github.com/rs/cors v1.8.3
 	github.com/samuel/go-zookeeper v0.0.0-20201211165307-7117e9ea2414
-	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.9.3
 	github.com/streadway/amqp v1.0.0
 	github.com/stretchr/testify v1.8.2
 	go.mongodb.org/mongo-driver v1.11.4
+	golang.org/x/exp v0.0.0-20190121172915-509febef88a4
 	golang.org/x/text v0.9.0
 	golang.org/x/time v0.3.0
 	google.golang.org/protobuf v1.30.0
@@ -43,7 +40,6 @@ require (
 )
 
 require (
-	github.com/ajg/form v1.5.1 // indirect
 	github.com/boj/redistore v0.0.0-20180917114910-cd5dcc76aeff // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -78,13 +74,13 @@ require (
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
-	github.com/mattn/go-runewidth v0.0.4 // indirect
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe // indirect
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
 	github.com/onsi/gomega v1.27.1 // indirect
+	github.com/orcaman/concurrent-map v1.0.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.7 // indirect
 	github.com/pierrec/lz4/v4 v4.1.17 // indirect
 	github.com/pion/datachannel v1.5.2 // indirect
@@ -103,8 +99,10 @@ require (
 	github.com/pion/transport v0.13.0 // indirect
 	github.com/pion/turn/v2 v2.0.8 // indirect
 	github.com/pion/udp v0.1.1 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
+	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect

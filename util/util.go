@@ -23,6 +23,14 @@ import (
 	"time"
 )
 
+const (
+	B int64 = 1 << (iota * 10)
+	KB
+	MB
+	GB
+	TB
+)
+
 func MainDefer() {
 	if e := recover(); e != nil {
 		pwd, _ := os.Getwd()
